@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Phishing Detector</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title" style="font-family: sans-serif; padding-left: 20px;">AI-Powered Email Phishing Detector</h1>
+            <input type="text" id="emailInput" placeholder="Paste email content here..." class="input">
+            <button id="analyzeButton" class="button" style="font-family: sans-serif;">Check for Phishing</button>
+            <div id="result" class="result" style="display: none;">
+                <p class="result-title">Result:</p>
+                <p id="resultText" class="result-text"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("analyzeButton").addEventListener("click", async function() {
+            const emailText = document.getElementById("emailInput").value;
+            const resultDiv = document.getElementById("result");
+            const resultText = document.getElementById("resultText");
+            
+            resultDiv.style.display = "block";
+            resultText.textContent = "Analyzing...";
+            
+            try {
+                const response = await fetch("http://localhost:5000/analyze", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: emailText })
+                });
+                const data = await response.json();
+                resultText.textContent = data.error || data.message;
+            } catch (error) {
+                console.error("Error analyzing email:", error);
+                resultText.textContent = "Failed to analyze email.";
+            }
+        });
+    </script>
+</body>
+</html>
