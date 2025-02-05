@@ -11,10 +11,11 @@ body {
 .card {
     width: 100%;
     max-width: 600px;
+    border: 1px solid rgba(73, 14, 14, 0.125);
     padding: 24px;
     background: rgba(255, 0, 0, 0.079);
     border-radius: 16px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.197);
 }
 
 .input {
@@ -45,7 +46,7 @@ body {
     margin-top: 10px;
     padding: 10px;
     background-color: #e5e7eb;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .result-title {
@@ -55,3 +56,36 @@ body {
 .result-text {
     font-size: 16px;
 }
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.toggle-button {
+    background: linear-gradient(135deg, #4A90E2, #1C3FAA);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+.toggle-button:hover {
+    background: linear-gradient(135deg, #1C3FAA, #4A90E2);
+    transform: scale(1.05);
+}
+.toggle-button:active {
+    transform: scale(0.95);
+}
+.dark-mode {
+    background-color: #1e1e1ee5;
+    color: white;
+}
+.light-mode {
+    background-color: whitesmoke;
+    color: black;
+}
+

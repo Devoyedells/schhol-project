@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Phishing Detector</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
-<body>
+<body class="light-mode">
+    <div class="toggle-container">
+        <button id="themeToggle" class="toggle-button">🌙 Dark Mode</button>
+    </div>
     <div class="container">
         <div class="card">
-            <h1 class="title" style="font-family: sans-serif; padding-left: 20px;">AI-Powered Email Phishing Detector</h1>
-            <input type="text" id="emailInput" placeholder="Paste email content here..." class="input">
-            <button id="analyzeButton" class="button" style="font-family: sans-serif;">Check for Phishing</button>
+            <h1 class="title" style="font-family: sans-serif; margin-left: 25px;">AI-Powered Email Phishing Detector</h1>
+            <input type="text" id="emailInput" placeholder="Paste email content here..." style="background-color: rgba(255, 255, 255, 0.477); color: white;" class="input">
+            <button id="analyzeButton" class="button">Check for Phishing</button>
             <div id="result" class="result" style="display: none;">
-                <p class="result-title">Result:</p>
-                <p id="resultText" class="result-text"></p>
+                <p class="result-title" style="color: black; font-family: sans-serif;">Result:</p>
+                <p id="resultText" class="result-text" style="color: black; font-family: sans-serif;"></p>
             </div>
         </div>
     </div>
@@ -39,6 +42,12 @@
                 console.error("Error analyzing email:", error);
                 resultText.textContent = "Failed to analyze email.";
             }
+        });
+
+        document.getElementById("themeToggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle("light-mode");
+            this.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
         });
     </script>
 </body>
